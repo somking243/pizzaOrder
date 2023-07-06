@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bootstrap demo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous" />
+  <style>
+    .red {
+      color: red;
+    }
+
+    #my {
+      zoom: 100%;
+    }
+
+    .imgfix {
+      max-width: 377px;
+    }
+
+    .j {
+      padding: 5px 0px;
+    }
+
+    .ap {
+      margin-left: -87px;
+      justify-content: center;
+    }
+
+    .ar {
+      margin-left: 34%;
+
+    }
+
+    .as {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div id="show"></div>
+  </div>
+
+  <script>
+    let pizzaArray = [
+      {
+        id: "MIR101",
+        image: "https://i.ibb.co/SR1Jzpv/mirinda.png",
+        type: "Beverage",
+        name: "Mirinda",
+        desc: "Mirinda",
+        veg: "Yes",
+      },
+      {
+        id: "PEP001",
+        image: "https://i.ibb.co/3vkKqsF/pepsi-black.png",
+        type: "Beverage",
+        name: "Pepsi Black Can",
+        desc: "Pepsi Black Can",
+        veg: "Yes",
+      },
+      {
+        id: "LIT281",
+        image: "https://i.ibb.co/27PvTng/lit.png",
+        type: "Beverage",
+        name: "Lipton Iced Tea",
+        desc: "Lipton Iced Tea",
+        veg: "Yes",
+      },
+      {
+        id: "PEP022",
+        image: "https://i.ibb.co/1M9xDZB/pepsi-new-20190312.png",
+        type: "Beverage",
+        name: "Pepsi New",
+        desc: "Pepsi New",
+        veg: "Yes",
+      },
+      {
+        id: "BPCNV1",
+        image: "https://i.ibb.co/R0VSJjq/Burger-Pizza-Non-Veg-nvg.png",
+        type: "Burger Pizza",
+        name: "Classic Non Veg",
+        desc: "Oven-baked buns with cheese, peri-peri chicken, tomato & capsicum in creamy mayo",
+        veg: "No",
+      },
+      {
+        id: "BPCV03",
+        image:
+          "https://i.ibb.co/Xtx43fT/Burger-Pizza-Veg-423-X420-Pixel-1.png",
+        type: "Burger Pizza",
+        name: "Classic Veg",
+        desc: "Oven-baked buns with cheese, tomato & capsicum in creamy mayo",
+        veg: "Yes",
+      },
+      {
+        id: "BPPV04",
+        image:
+          "https://i.ibb.co/Xtx43fT/Burger-Pizza-Veg-423-X420-Pixel-1.png",
+        type: "Burger Pizza",
+        name: "Premium Veg",
+        desc: "Oven-baked buns with cheese, paneer, tomato, capsicum & red paprika in creamy mayo",
+        veg: "Yes",
+      },
+      {
+        id: "DIP033",
+        image: "https://i.ibb.co/0mbBzsw/new-cheesy.png",
+        type: "Side Dish",
+        name: "Cheesy Dip",
+        desc: "An all-time favorite with your Garlic Breadsticks & Stuffed Garlic Bread for a Cheesy indulgence",
+        veg: "Yes",
+      },
+      {
+        id: "DIP072",
+        image: "https://i.ibb.co/fY52zBw/new-jalapeno.png",
+        type: "Side Dish",
+        name: "Cheesy Jalapeno Dip",
+        desc: "A spicy, tangy flavored cheese dip is an absolute delight with your favorite Garlic Breadsticks",
+        veg: "Yes",
+      },
+      {
+        id: "GAR952",
+        image: "https://i.ibb.co/BNVmfY9/Garlic-bread.png",
+        type: "Side Dish",
+        name: "Garlic Breadsticks",
+        desc: "Baked to perfection. Your perfect pizza partner! Tastes best with dip",
+        veg: "Yes",
+      },
+      {
+        id: "PARCH1",
+        image: "https://i.ibb.co/prBs3NJ/Parcel-Nonveg.png",
+        type: "Side Dish",
+        name: "Chicken Parcel",
+        desc: "Snacky bites! Pizza rolls with chicken sausage & creamy harissa sauce",
+        veg: "No",
+      },
+      {
+        id: "PARVG7",
+        image: "https://i.ibb.co/JHhrM7d/Parcel-Veg.png",
+        type: "Side Dish",
+        name: "Veg Parcel",
+        desc: "Snacky bites! Pizza rolls with paneer & creamy harissa sauce",
+        veg: "Yes",
+      },
+
+      {
+        id: "PATVG4",
+        image: "https://i.ibb.co/mv8RFbk/White-Pasta-Veg.png",
+        type: "Side Dish",
+        name: "White Pasta Italiano Veg",
+        desc: "Creamy white pasta with herb grilled mushrooms",
+        veg: "Yes",
+      },
+      {
+        id: "DES044",
+        image: "https://i.ibb.co/gvpDKPv/Butterscotch.png",
+        type: "Dessert",
+        name: "Butterscotch Mousse Cake",
+        desc: "Sweet temptation! Butterscotch flavored mousse",
+        veg: "Yes",
+      },
+      {
+        id: "DES028",
+        image: "https://i.ibb.co/nm96NZW/Choco-Lava.png",
+        type: "Dessert",
+        name: "Choco Lava Cake",
+        desc: "Chocolate lovers delight! Indulgent, gooey molten lava inside chocolate cake",
+        veg: "Yes",
+      },
+      {
+        id: "PIZVDV",
+        image: "https://i.ibb.co/F0H0SWG/deluxeveg.png",
+        type: "Pizza",
+        name: "Deluxe Veggie",
+        desc: "Veg delight - onion, capsicum, grilled mushroom, corn & paneer",
+        veg: "Yes",
+      },
+      {
+        id: "PIZVFH",
+        image: "https://i.ibb.co/4mHxB5x/farmhouse.png",
+        type: "Pizza",
+        name: "Farmhouse",
+        desc: "Delightful combination of onion, capsicum, tomato & grilled mushroom",
+        veg: "Yes",
+      },
+
+      {
+        id: "PIZVIT",
+        image: "https://i.ibb.co/sRH7Qzf/Indian-Tandoori-Paneer.png",
+        type: "Pizza",
+        name: "Indi Tandoori Paneer",
+        desc: "It is hot. It is spicy. It is oh-so-Indian. Tandoori paneer with capsicum, red paprika & mint mayo",
+        veg: "Yes",
+      },
+      {
+        id: "PIZVMG",
+        image: "https://i.ibb.co/MGcHnDZ/mexgreen.png",
+        type: "Pizza",
+        name: "Mexican Green Wave",
+        desc: "Mexican herbs sprinkled on onion, capsicum, tomato & jalapeno",
+        veg: "Yes",
+      },
+      {
+        id: "PIZVPP",
+        image: "https://i.ibb.co/cb5vLX9/peppypaneer.png",
+        type: "Pizza",
+        name: "Peppy Paneer",
+        desc: "Flavorful trio of juicy paneer, crisp capsicum with spicy red paprika",
+        veg: "Yes",
+      },
+      {
+        id: "PIZVVE",
+        image: "https://i.ibb.co/gTy5DTK/vegextra.png",
+        type: "Pizza",
+        name: "Veg Extravaganza",
+        desc: "Black olives, capsicum, onion, grilled mushroom, corn, tomato, jalapeno & extra cheese",
+        veg: "Yes",
+      },
+      {
+        id: "PIZNCP",
+        image: "https://i.ibb.co/b5qBJ9d/cheesepepperoni.png",
+        type: "Pizza",
+        name: "Chicken Pepperoni",
+        desc: "A classic American taste! Relish the delectable flavor of Chicken Pepperoni, topped with extra cheese",
+        veg: "No",
+      },
+      {
+        id: "PIZNCD",
+        image: "https://i.ibb.co/GFtkbB1/ChickenDominator10.png",
+        type: "Pizza",
+        name: "Chicken Dominator",
+        desc: "Loaded with double pepper barbecue chicken, peri-peri chicken, chicken tikka & grilled chicken rashers",
+        veg: "No",
+      },
+      {
+        id: "PIZNPB",
+        image: "https://i.ibb.co/GxbtcLK/Pepper-Barbeque-OnionC.png",
+        type: "Pizza",
+        name: "Pepper Barbecue & Onion",
+        desc: "A classic favourite with pepper barbeque chicken & onion",
+        veg: "No",
+      },
+      {
+        id: "PIZNIC",
+        image: "https://i.ibb.co/6Z5wBqr/Indian-Tandoori-ChickenTikka.png",
+        type: "Pizza",
+        name: "Indi Chicken Tikka",
+        desc: "The wholesome flavour of tandoori masala with Chicken tikka, onion, red paprika & mint mayo",
+        veg: "No",
+      },
+    ];
+
+    let sizes = ["Regular", "Medium", "Large"];
+    let crusts = [
+      "New Hand Tossed",
+      "Wheat Thin Crust",
+      "Cheese Burst",
+      "Fresh Pan Pizza",
+      "Classic Hand",
+      "Tossed",
+    ];
+    let cart = [];
+    show();
+
+    function show(active = 0) {
+      let str = makeNavbar(active);
+      active === 1 ? (str += veg1(pizzaArray, cart)) : (str += "");
+      active === 2 ? (str += nonveg1(pizzaArray, cart)) : (str += "");
+      active === 3 ? (str += side1(pizzaArray, cart)) : (str += "");
+      active === 4 ? (str += other1(pizzaArray, cart)) : (str += "");
+
+      document.getElementById("show").innerHTML = str;
+    }
+
+    function veg() {
+      show(1);
+      makeCart()
+    }
+
+    function nonveg() {
+      show(2);
+      makeCart()
+    }
+
+    function side() {
+      show(3);
+      makeCart()
+    }
+
+    function other() {
+      show(4);
+      makeCart()
+    }
+
+    function makeDD(id, array, header) {
+      const arr = array.map(opt => {
+
+        return '<option>' + opt + '</option>';
+      });
+
+      let s1 = '<div class="form-group">';
+      s1 += '<select id="' + id + '" class="form-control">';
+
+      s1 += '<option value="" disabled selected>' + header + '</option>';
+      s1 += arr.join('');
+      s1 += '</select>';
+      s1 += '</div>';
+      return s1;
+    }
+
+    function veg1(p1, cart) {
+      let arr = p1.filter((ele) => {
+        return ele.type === "Pizza" && ele.veg === "Yes";
+      });
+      let str = '';
+
+
+      let rows = Math.ceil(arr.length / 2);
+
+      for (let i = 0; i < rows; i++) {
+        str += '<div class="card">';
+        str += '<div class="row">';
+
+        for (let j = 0; j < 2; j++) {
+          let index = i * 2 + j;
+
+          if (index < arr.length) {
+            let item = arr[index];
+
+
+
+            str += '<div class="col-md-4">';
+            str += '<div class="row">';
+            str += '<div class="col-md-12">';
+            str += '<img src="' + item.image + '" class="w-100" alt="">';
+            str += '<h3 class="text-center">' + item.name + '</h3>';
+            str += '<p class="text-center">' + item.desc + '</p>';
+            str += '<div class="row">';
+            str += '<div class="col-6">';
+            str += makeDD("dd" + index, sizes, 'Select Size');
+            str += '</div>';
+            str += '<div class="col-6">';
+            str += makeDD("bb" + index, crusts, 'Select Crusts');
+            str += '</div>';
+            str += '</div>';
+            console.log(cart);
+
+            console.log(cart.filter(ele => ele.code === item.code), 'filtering out the data with code')
+            if (!cart.length) {
+
+              str += '<button id="bt1' + index + '" type="button" class="btn btn-primary ar" onclick="addToCart(\'' + item.id + '\',' + index + ')">Add to Cart</button>';
+            }
+            // else {
+
+            //  str += '<button id="bt1' + index + '" type="button" class="btn btn-primary ar" onclick="addToCart(\'' + item.id + '\',' + index + ')">Add to Cart</button>';
+            //  }
+
+            str += '<div id="d2' + index + '" class="as"></div>';
+            str += '</div>';
+            str += '</div>';
+            str += '</div>';
+          }
+        }
+
+        str += '<div class="col-md-4">';
+        if (cart === '') {
+          str += '<h3 class="text-center">Cart is empty.</h3>';
+        } else {
+          str += '<div id="data"></div>';
+        }
+        str += '</div>';
+
+        str += '</div>';
+      }
+
+
+      return str;
+    }
+
+    function makeCart() {
+
+      let arr = cart.map((ele, index) => {
+        let str = '<div class="row justify-content-center">';
+        str += '<div class="col-5">';
+        str += '<div class="card">';
+        str += '<img src="' + ele.image + '" alt="">';
+        str += '</div>';
+        str += '</div>';
+        str += '<div class="col-7">';
+        str += '<h3 class="text-center">' + ele.name + '</h3>';
+        str += '<p class="text-center">' + ele.desc + '</p>';
+        str += '<h4 class="text-center">' + ele.size + '  ' + ele.crusts + '</h4>';
+
+        if (ele.qty > 0) {
+
+          str += quantityFunction(ele.code,ele.qty)
+          str += '<hr/>';
+        } else {
+          str += '<button id="bt1' + index + '" type="button" class="btn btn-primary ar" onclick="addToCart(\'' + ele.code + '\',' + index + ')">Add to Cart</button>';
+          str += '<hr/>';
+        }
+
+        str += '</div>';
+        str += '</div>';
+        str += '</di>';
+        str += '</div>';
+        return str;
+      });
+
+      let st = '<h3 class="text-center">Cart</h3>';
+      document.getElementById('data').innerHTML = st + arr.join('');
+    }
+
+    
+    
+    
+    function quantityFunction(pizzaId,quantity) {
+      console.log('consoling called' ,pizzaId,quantity);  
+      let str = '<div class="btn-group" role="group" aria-label="Quantity" class="ar">';
+      str += '<button  type="button" class="btn btn-danger " onClick="decrease(\'' + pizzaId + '\')">-</button>';
+      str += '<button type="button" class="btn btn-secondary">' + quantity + '</button>';
+      str += '<button type="button" class="btn btn-success " onClick="adding(\'' + pizzaId + '\')">+</button>';
+      str += '</div>';
+
+      return str
+    }
+
+
+    function addToCart(itemid, index) {
+
+      let arr = pizzaArray.find((ele) => ele.id === itemid);
+      if (arr.type == "Pizza") {
+        let id1 = document.getElementById('dd' + index).value;
+        let id2 = document.getElementById('bb' + index).value;
+
+
+        if (id1 === "" || id2 === "") {
+          alert('Size and Crust are necessary to add to cart.');
+        } else {
+          cart.push({
+            code: arr.id,
+            image: arr.image,
+            name: arr.name,
+            desc: arr.desc,
+            qty: 1,
+            crusts: id2,
+            size: id1
+          });
+        }
+
+        console.log(cart, 'cart after adding add to cart');
+      }
+
+      if (arr.type == "Side Dish" || arr.type == "Beverage" || arr.type == "Burger Pizaa" || arr.type == "Dessert") {
+        cart.push({
+          code: arr.id,
+          image: arr.image,
+          name: arr.name,
+          desc: arr.desc,
+          qty: 1,
+          crusts: '',
+          size: ''
+        });
+        console.log(cart, 'from add to cart from single product')
+        makeCart()
+      }
+
+      let arr1 = cart.find(ele => ele.code === arr.id);
+      console.log(arr1)
+    
+      console.log(cart, 'checking cart value show')
+
+      document.getElementById("d2" + index).innerHTML = quantityFunction(arr1.code,arr1.qty);
+      if (arr1 && arr1.qty > 0) {
+        document.getElementById("d2" + index).style.display = "block";
+        document.getElementById("bt1" + index).style.display = "none";
+
+        makeCart()
+        veg1();
+      } else {
+        document.getElementById("bt1" + index).style.display = "block";
+        document.getElementById("d2" + index).style.display = "none";
+
+      }
+
+      let id3 = document.getElementById('dd' + index);
+      let id4 = document.getElementById('bb' + index);
+      if (!id3 == "" || !id4 == "") {
+
+        id3.disabled = true;
+        id4.disabled = true;
+      }
+
+
+
+
+      makeCart()
+
+    }
+
+    function decrease(id, index) {
+
+
+
+      let item = cart.find((ele) => {
+        return ele.code == id
+      }
+      )
+      let ind = cart.findIndex((el) => {
+        return el.code == id
+      })
+
+      if (item.qty > 1) {
+        item.qty--;
+
+        makeCart();
+      } else {
+        cart.splice(ind, 1);
+
+        let id3 = document.getElementById('dd' + index);
+        let id4 = document.getElementById('bb' + index);
+        if (!id3 == '' || !id4 == '') {
+
+          id3.disabled = false;
+          id4.disabled = false;
+          id3.value = ""
+          id4.value = ""
+        }
+
+
+        makeCart();
+        document.getElementById("bt1" + index).style.display = "block";
+        document.getElementById("d2" + index).style.display = "none";
+      }
+    }
+
+    function adding(id, index) {
+
+      let item = cart.find((ele) => {
+        return ele.code == id
+
+      })
+      item.qty++;
+
+      makeCart();
+      addToCart();
+      document.getElementById("bt1" + index).style.display = "none";
+      document.getElementById("d2" + index).style.display = "block";
+    }
+
+    function side1(p1, cart) {
+      let arr = p1.filter((ele) => {
+        return ele.type === "Side Dish";
+      });
+      let str = '';
+
+
+      let rows = Math.ceil(arr.length / 2);
+
+      for (let i = 0; i < rows; i++) {
+        str += '<div class="card">';
+        str += '<div class="row">';
+
+        for (let j = 0; j < 2; j++) {
+          let index = i * 2 + j;
+
+          if (index < arr.length) {
+            let item = arr[index];
+
+
+
+            str += '<div class="col-md-4">';
+            str += '<div class="row">';
+            str += '<div class="col-md-12">';
+            str += '<img src="' + item.image + '" class="w-100" alt="">';
+            str += '<h3 class="text-center">' + item.name + '</h3>';
+            str += '<p class="text-center">' + item.desc + '</p>';
+
+            str += '<button id="bt1' + index + '" type="button" class="btn btn-primary ar" onclick="addToCart(\'' + item.id + '\',' + index + ')">Add to Cart</button>';
+            str += '<div id="d2' + index + '" class="as"></div>';
+            str += '</div>';
+            str += '</div>';
+            str += '</div>';
+          }
+        }
+        str += '<div class="col-md-4">';
+        if (cart === '') {
+          str += '<h3 class="text-center">Cart is empty.</h3>';
+        } else {
+          str += '<div id="data"></div>';
+        }
+        str += '</div>';
+
+        str += '</div>';
+      }
+
+
+      return str;
+    }
+
+    function other1(p1, cart) {
+      let arr = p1.filter((ele) => {
+        return ele.type === "Beverage" || ele.type === "Dessert" || ele.type === "Burger Pizza";
+      });
+      let str = '';
+
+
+      let rows = Math.ceil(arr.length / 2);
+
+      for (let i = 0; i < rows; i++) {
+        str += '<div class="card">';
+        str += '<div class="row">';
+
+        for (let j = 0; j < 2; j++) {
+          let index = i * 2 + j;
+
+          if (index < arr.length) {
+            let item = arr[index];
+
+
+
+            str += '<div class="col-md-4">';
+            str += '<div class="row">';
+            str += '<div class="col-md-12">';
+            str += '<img src="' + item.image + '" class="w-100" alt="">';
+            str += '<h3 class="text-center">' + item.name + '</h3>';
+            str += '<p class="text-center">' + item.desc + '</p>';
+
+            str += '<button id="bt1' + index + '" type="button" class="btn btn-primary ar" onclick="addToCart(\'' + item.id + '\',' + index + ')">Add to Cart</button>';
+            str += '<div id="d2' + index + '" class="as"></div>';
+            str += '</div>';
+            str += '</div>';
+            str += '</div>';
+          }
+        }
+        str += '<div class="col-md-4">';
+        if (cart === '') {
+          str += '<h3 class="text-center">Cart is empty.</h3>';
+        } else {
+          str += '<div id="data"></div>';
+        }
+        str += '</div>';
+
+        str += '</div>';
+      }
+
+
+      return str;
+    }
+
+    function nonveg1(p1, cart) {
+      let arr = p1.filter((ele) => {
+        return ele.type === "Pizza" && ele.veg === "No";
+      });
+      let str = '';
+      let rows = Math.ceil(arr.length / 2);
+
+      for (let i = 0; i < rows; i++) {
+        str += '<div class="row">';
+
+        for (let j = 0; j < 2; j++) {
+          let index = i * 2 + j;
+
+          if (index < arr.length) {
+            let item = arr[index];
+
+            str += '<div class="col-md-4">';
+            str += '<div class="card">';
+            str += '<div class="row">';
+            str += '<div class="col-md-12">';
+            str += '<img src="' + item.image + '" class="w-100" alt="">';
+            str += '<h3 class="text-center">' + item.name + '</h3>';
+            str += '<p class="text-center">' + item.desc + '</p>';
+            str += '<div class="row">';
+            str += '<div class="col-6">';
+            str += makeDD("dd" + index, sizes, 'Select Size');
+            str += '</div>';
+            str += '<div class="col-6">';
+            str += makeDD("bb" + index, crusts, 'Select Crusts');
+            str += '</div>';
+            str += '</div>';
+            str += '<button id="bt1' + index + '" type="button" class="btn btn-primary ar" onclick="addToCart(\'' + item.id + '\',' + index + ')">Add to Cart</button>';
+            str += '<div id="d2' + index + '" class="as"></div>';
+            str += '</div>';
+            str += '</div>';
+            str += '</div>';
+            str += '</div>';
+          }
+        }
+        str += '<div class="col-md-4">';
+        if (cart === '') {
+          str += '<h3 class="text-center">Cart is empty.</h3>';
+        } else {
+          str += '<div id="data"></div>';
+        }
+        str += '</div>';
+
+        str += '</div>';
+      }
+
+
+      return str;
+    }
+
+    function makeNavbar(active = 0) {
+      let str = '<nav class="navbar navbar-expand-lg navbar-light bg-light">';
+      str += '<a class="navbar-brand " href="#">MyFavPizza</a>';
+      str +=
+        '<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">';
+      str += '<span class="navbar-toggler-icon"></span>';
+      str += "</button>";
+      str += '<div class="collapse navbar-collapse" id="navbarNavDropdown">';
+      str += '<ul class="navbar-nav ">';
+
+      let active1 = active === 1 ? "active" : "";
+      let active2 = active === 2 ? "active" : "";
+      let active3 = active === 3 ? "active" : "";
+      let active4 = active === 4 ? "active" : "";
+
+      str += '<li class="nav-item" ' + active1 + '">';
+      str += '<a class="nav-link  " onClick="veg()">Veg Pizza</a>';
+      str += "</li>";
+      str += '<li class="nav-item" ' + active2 + '">';
+      str += '<a class="nav-link  " onClick="nonveg()">Non-Veg Pizza</a>';
+      str += "</li>";
+      str += '<li class="nav-item" ' + active3 + '">';
+      str += '<a class="nav-link  " onClick="side()">Side Dishes</a>';
+      str += "</li>";
+      str += '<li class="nav-item" ' + active4 + '">';
+      str += '<a class="nav-link  " onClick="other()">Other Items</a>';
+      str += "</li>";
+      str += "</ul>";
+      str += "</div>";
+      str += "</nav>";
+      return str;
+    }
+
+    src =
+      "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js";
+    integrity =
+      "sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe";
+    crossorigin = "anonymous";
+  </script>
+</body>
+
+</html>
